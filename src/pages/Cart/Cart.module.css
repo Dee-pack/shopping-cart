@@ -1,0 +1,21 @@
+.cart,
+.empty {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.empty {
+  text-align: center;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.total {
+  text-align: right;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
