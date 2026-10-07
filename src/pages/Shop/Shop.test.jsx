@@ -1,5 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import Shop from './Shop';
+import { CartProvider } from '../../context/CartContext';
+
+function renderShop() {
+  return render(
+    <CartProvider>
+      <Shop />
+    </CartProvider>
+  );
+}
 
 const apiResponse = {
   products: [
@@ -16,7 +25,7 @@ describe('Shop', () => {
   it('shows a loader while fetching', () => {
     vi.stubGlobal('fetch', vi.fn(() => new Promise(() => {})));
 
-    render(<Shop />);
+    renderShop();
 
     expect(screen.getByRole('status')).toBeInTheDocument();
   });
@@ -30,7 +39,7 @@ describe('Shop', () => {
       })
     );
 
-    render(<Shop />);
+    renderShop();
 
     expect(await screen.findByRole('heading', { name: 'Shirt' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Hat' })).toBeInTheDocument();
@@ -40,7 +49,7 @@ describe('Shop', () => {
   it('shows an error message when the fetch fails', async () => {
     vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('Network down')));
 
-    render(<Shop />);
+    renderShop();
 
     expect(await screen.findByRole('alert')).toBeInTheDocument();
   });
