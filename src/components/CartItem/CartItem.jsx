@@ -1,6 +1,6 @@
-import { useCart } from '../../context/useCart';
-import QuantityInput from '../QuantityInput/QuantityInput';
-import styles from './CartItem.module.css';
+import { useCart } from "../../context/useCart";
+import QuantityInput from "../QuantityInput/QuantityInput";
+import styles from "./CartItem.module.css";
 
 function CartItem({ item }) {
   const { setQuantity, removeItem } = useCart();
@@ -12,16 +12,19 @@ function CartItem({ item }) {
         <h2 className={styles.title}>{item.title}</h2>
         <p>${item.price.toFixed(2)} each</p>
       </div>
-      <QuantityInput
-        value={item.quantity}
-        onChange={(q) => setQuantity(item.id, q)}
-        label={`Quantity for ${item.title}`}
-      />
+      <div className={styles.qty}>
+        <QuantityInput
+          value={item.quantity}
+          onChange={(q) => setQuantity(item.id, q)}
+          label={`Quantity for ${item.title}`}
+        />
+      </div>
       <p className={styles.subtotal}>
         ${(item.price * item.quantity).toFixed(2)}
       </p>
       <button
         type="button"
+        className={styles.remove}
         aria-label={`Remove ${item.title}`}
         onClick={() => removeItem(item.id)}
       >
