@@ -19,7 +19,10 @@ afterEach(() => {
 
 describe('useProducts', () => {
   it('starts in a loading state', () => {
-    vi.stubGlobal('fetch', vi.fn(() => new Promise(() => {})));
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(() => new Promise(() => {}))
+    );
 
     const { result } = renderHook(() => useProducts());
 
@@ -27,25 +30,28 @@ describe('useProducts', () => {
     expect(result.current.products).toEqual([]);
     expect(result.current.error).toBeNull();
   });
-it('returns normalized products after a successful fetch', async () => {
-  vi.stubGlobal(
-    'fetch',
-    vi.fn().mockResolvedValue({
-      ok: true,
-      json: () => Promise.resolve(apiResponse),
-    })
-  );
+  it('returns normalized products after a successful fetch', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve(apiResponse),
+      })
+    );
 
-  const { result } = renderHook(() => useProducts());
+    const { result } = renderHook(() => useProducts());
 
-  await waitFor(() => expect(result.current.loading).toBe(false));
+    await waitFor(() => expect(result.current.loading).toBe(false));
 
-  expect(result.current.products).toEqual(expectedProducts);
-  expect(result.current.error).toBeNull();
-});
+    expect(result.current.products).toEqual(expectedProducts);
+    expect(result.current.error).toBeNull();
+  });
 
   it('sets an error when the response is not ok', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: false, status: 500 }));
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({ ok: false, status: 500 })
+    );
 
     const { result } = renderHook(() => useProducts());
 
@@ -56,7 +62,10 @@ it('returns normalized products after a successful fetch', async () => {
   });
 
   it('sets an error when the network request fails', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('Network down')));
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockRejectedValue(new Error('Network down'))
+    );
 
     const { result } = renderHook(() => useProducts());
 

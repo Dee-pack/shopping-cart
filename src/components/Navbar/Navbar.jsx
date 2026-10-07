@@ -12,7 +12,9 @@ function Navbar() {
 
   return (
     <nav className={styles.nav}>
-      <NavLink to="/" end>Home</NavLink>
+      <NavLink to="/" end>
+        Home
+      </NavLink>
       <NavLink to="/shop">Shop</NavLink>
       <NavLink to="/cart" aria-label={cartLabel} className={styles.cartLink}>
         Cart

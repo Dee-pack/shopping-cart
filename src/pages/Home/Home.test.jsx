@@ -22,17 +22,22 @@ describe('Home', () => {
   it('has a call-to-action link to the shop', () => {
     renderHome();
 
-    expect(screen.getByRole('link', { name: /start shopping/i })).toHaveAttribute(
-      'href',
-      '/shop'
-    );
+    expect(
+      screen.getByRole('link', { name: /start shopping/i })
+    ).toHaveAttribute('href', '/shop');
   });
 
   it('renders the highlight sections', () => {
     renderHome();
 
-    expect(screen.getByRole('heading', { name: 'Wide selection' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Simple cart' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Live updates' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Wide selection' })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Simple cart' })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Live updates' })
+    ).toBeInTheDocument();
   });
 });

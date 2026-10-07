@@ -47,6 +47,8 @@ describe('ProductCard', () => {
     await user.click(screen.getByRole('button', { name: /increase/i }));
     await user.click(screen.getByRole('button', { name: /add to cart/i }));
 
-    expect(screen.getByRole('textbox', { name: /quantity for shirt/i })).toHaveValue('1');
+    expect(
+      screen.getByRole('textbox', { name: /quantity for shirt/i })
+    ).toHaveValue('1');
   });
 });

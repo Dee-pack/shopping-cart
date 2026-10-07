@@ -1,6 +1,6 @@
-import { useCart } from "../../context/useCart";
-import QuantityInput from "../QuantityInput/QuantityInput";
-import styles from "./CartItem.module.css";
+import { useCart } from '../../context/useCart';
+import QuantityInput from '../QuantityInput/QuantityInput';
+import styles from './CartItem.module.css';
 
 function CartItem({ item }) {
   const { setQuantity, removeItem } = useCart();

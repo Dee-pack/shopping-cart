@@ -23,7 +23,10 @@ afterEach(() => {
 
 describe('Shop', () => {
   it('shows a loader while fetching', () => {
-    vi.stubGlobal('fetch', vi.fn(() => new Promise(() => {})));
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(() => new Promise(() => {}))
+    );
 
     renderShop();
 
@@ -41,13 +44,18 @@ describe('Shop', () => {
 
     renderShop();
 
-    expect(await screen.findByRole('heading', { name: 'Shirt' })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { name: 'Shirt' })
+    ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Hat' })).toBeInTheDocument();
     expect(screen.getByText('$10.50')).toBeInTheDocument();
   });
 
   it('shows an error message when the fetch fails', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('Network down')));
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockRejectedValue(new Error('Network down'))
+    );
 
     renderShop();
 

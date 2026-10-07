@@ -43,7 +43,9 @@ describe('Navbar', () => {
   it('shows no badge when the cart is empty', () => {
     renderNavbar();
 
-    expect(screen.getByRole('link', { name: 'Cart' })).toHaveTextContent(/^Cart$/);
+    expect(screen.getByRole('link', { name: 'Cart' })).toHaveTextContent(
+      /^Cart$/
+    );
   });
 
   it('shows the total quantity once items are added', async () => {
@@ -62,9 +64,13 @@ describe('Navbar', () => {
 
     await user.click(screen.getByRole('button', { name: 'add shirts' }));
     await user.click(screen.getByRole('button', { name: 'add hat' }));
-    expect(screen.getByRole('link', { name: 'Cart, 3 items' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Cart, 3 items' })
+    ).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: 'remove shirts' }));
-    expect(screen.getByRole('link', { name: 'Cart, 1 item' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Cart, 1 item' })
+    ).toBeInTheDocument();
   });
 });

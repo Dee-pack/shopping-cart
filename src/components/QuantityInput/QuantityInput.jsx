@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import styles from './QuantityInput.module.css';
 
-function QuantityInput({ value, onChange, min = 1, max = 99, label = 'Quantity' }) {
+function QuantityInput({
+  value,
+  onChange,
+  min = 1,
+  max = 99,
+  label = 'Quantity',
+}) {
   // `draft` holds what the user is typing while it's not yet a valid number
   // (e.g. an empty field). When null, we just display the real value.
   const [draft, setDraft] = useState(null);

@@ -41,9 +41,21 @@
     align-items: center;
   }
 
-  .image { grid-area: image; }
-  .details { grid-area: details; }
-  .subtotal { grid-area: sub; text-align: left; }
-    .qty { grid-area: qty; }
-  .remove { grid-area: remove; justify-self: end; }
+  .image {
+    grid-area: image;
+  }
+  .details {
+    grid-area: details;
+  }
+  .subtotal {
+    grid-area: sub;
+    text-align: left;
+  }
+  .qty {
+    grid-area: qty;
+  }
+  .remove {
+    grid-area: remove;
+    justify-self: end;
+  }
 }

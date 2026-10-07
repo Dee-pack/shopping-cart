@@ -34,7 +34,9 @@ describe('Cart page', () => {
     renderCart();
 
     expect(screen.getByText('Your cart is empty.')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /browse the shop/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /browse the shop/i })
+    ).toBeInTheDocument();
   });
 
   it('lists items and shows the total', async () => {

@@ -8,7 +8,10 @@ function Shop() {
   const { products, loading, error } = useProducts();
 
   if (loading) return <Loader />;
-  if (error) return <ErrorMessage message="Could not load products. Please try again." />;
+  if (error)
+    return (
+      <ErrorMessage message="Could not load products. Please try again." />
+    );
 
   return (
     <section>
