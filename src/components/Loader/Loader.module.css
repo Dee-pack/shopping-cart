@@ -1,4 +1,57 @@
 .loader {
-  padding: 2rem;
-  text-align: center;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: #003;
+}
+
+.box {
+  width: 50px;
+  height: 50px;
+  background: #003;
+  border: 8px solid aqua;
+  border-radius: 5px;
+  box-shadow:
+    0 0 8px aqua,
+    0 0 8px aqua inset;
+  animation: loading 2s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+
+  33% {
+    transform: rotateX(180deg) rotateY(0deg) rotateZ(0deg);
+  }
+
+  67% {
+    transform: rotateX(180deg) rotateY(180deg) rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);
+  }
+}
+
+/* Visually hidden, but still read by screen readers */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box {
+    animation-duration: 4s;
+  }
 }

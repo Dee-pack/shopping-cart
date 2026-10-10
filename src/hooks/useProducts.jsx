@@ -6,11 +6,15 @@ export function useProducts() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  // Keep the loader visible long enough to be seen. Skipped in tests so they stay fast.
+  const MIN_LOADING_MS = import.meta.env.MODE === 'test' ? 0 : 3500;
 
   useEffect(() => {
     const controller = new AbortController();
 
     async function load() {
+      const startedAt = Date.now();
+
       try {
         const response = await fetch(API_URL, { signal: controller.signal });
 
@@ -19,6 +23,13 @@ export function useProducts() {
         }
 
         const data = await response.json();
+
+        const remaining = MIN_LOADING_MS - (Date.now() - startedAt);
+        if (remaining > 0) {
+          await new Promise((resolve) => setTimeout(resolve, remaining));
+        }
+        if (controller.signal.aborted) return;
+
         setProducts(
           data.products.map((p) => ({
             id: p.id,
